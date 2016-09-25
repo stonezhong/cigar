@@ -1,0 +1,28 @@
+{
+  "name": "cigar",
+  "version": "0.0.1",
+  "description": "Framework for asynchronous programming",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "asynchronous",
+    "promise",
+    "await",
+    "cigar"
+  ],
+  "author": "Stone Zhong <stonezhong@hotmail.com>",
+  "license": "MIT",
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
+  },
+  "dependencies": {
+    "es6-error": "^3.1.0"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.14.0"
+  }
+}
