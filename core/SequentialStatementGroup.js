@@ -1,4 +1,4 @@
-import {isPromise, getValue, executeStatement} from './Util';
+import {isPromise, executeStatement} from './Util';
 import Statement from './Statement';
 
 export default class SequentialStatementGroup extends Statement {

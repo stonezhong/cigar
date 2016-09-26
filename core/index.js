@@ -9,6 +9,7 @@ import THROW from './Throw';
 import SEQ from './Seq';
 
 import { add, ge, g, le, l, eq, ne, mod} from './Math';
+import { requireValue } from './Util';
 
 global['IF']        = IF;
 global['FOR']       = FOR;
@@ -29,7 +30,7 @@ global['C']         = {
     eq:  eq,
     ne:  ne,
     mod: mod,
+    requireValue: requireValue,
 };
-
 
 module.export = {};

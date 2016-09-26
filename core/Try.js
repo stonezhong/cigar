@@ -1,6 +1,6 @@
 // Syntax: TRY(statement).CATCH(handler).FINALLY(handler)
 
-import {isPromise, getValue, executeStatement} from './Util';
+import {isPromise, executeStatement} from './Util';
 import Statement from './Statement';
 import SequentialStatementGroup from './SequentialStatementGroup';
 

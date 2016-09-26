@@ -1,6 +1,6 @@
 // Syntax
 // FOR(initExpr, conditionExpr, stepExpr).DO(bodyStatement);
-import {isPromise, getValue, executeStatement} from './Util';
+import {isPromise, executeStatement} from './Util';
 import Statement from './Statement';
 import SequentialStatementGroup from './SequentialStatementGroup';
 import BreakError from './BreakError';
@@ -28,14 +28,14 @@ class ForStatement extends Statement {
 
         return Promise.resolve(executeStatement(this.bodyStatement)).then(
             () => {
-                return Promise.resolve(getValue(this.stepExpr)).then(this.runLoop);
+                return Promise.resolve(executeStatement(this.stepExpr)).then(this.runLoop);
             }, 
             (error) => {
                 if (error instanceof BreakError) {
                     return Promise.resolve(undefined);
                 }
                 if (error instanceof ContinueError) {
-                    return Promise.resolve(getValue(this.stepExpr)).then(this.runLoop);
+                    return Promise.resolve(executeStatement(this.stepExpr)).then(this.runLoop);
                 }
                 return error; // unhandled error
             }
@@ -43,13 +43,13 @@ class ForStatement extends Statement {
     }
 
     runLoop() {
-        return Promise.resolve(getValue(this.conditionExpr)).then((resolvedConditionValue) => {
+        return Promise.resolve(executeStatement(this.conditionExpr)).then((resolvedConditionValue) => {
             return this.runLoopWithResolvedConditionValue(resolvedConditionValue);
         });
     }
 
     run() {
-        return Promise.resolve(getValue(this.initExpr)).then(this.runLoop);
+        return Promise.resolve(executeStatement(this.initExpr)).then(this.runLoop);
     }
 }
 

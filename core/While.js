@@ -1,7 +1,7 @@
 // Syntax
 // WHILE (conditionExpr).DO(statement)
 
-import {isPromise, getValue, executeStatement} from './Util';
+import {isPromise, executeStatement} from './Util';
 import Statement from './Statement';
 import SequentialStatementGroup from './SequentialStatementGroup';
 import BreakError from './BreakError';
@@ -18,7 +18,7 @@ class WhileStatement extends Statement {
     }
 
     run() {
-        return Promise.resolve(getValue(this.conditionExpr)).then(
+        return Promise.resolve(executeStatement(this.conditionExpr)).then(
             (resolvedConditionValue) => {
                 if (!resolvedConditionValue) {
                     return Promise.resolve(undefined);

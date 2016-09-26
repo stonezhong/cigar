@@ -6,18 +6,6 @@ export function isPromise(value) {
         typeof(value.catch) === 'function');
 }
 
-
-export function getValue(value) {
-    if (value instanceof Statement) {
-        return value.run();
-    }
-    if (value && value.constructor && value.call && value.apply && value.length == 0) {
-        return value();
-    }
-
-    return value;
-}
-
 export function executeStatement(statement) {
     if (statement instanceof Statement) {
         return statement.run();
@@ -27,5 +15,15 @@ export function executeStatement(statement) {
         return statement();
     }
 
-    return Promise.resolve(undefined);
+    return statement;
+}
+
+/**
+ * So far, there is no way to get an already resolved promise's value synchronously,
+ * I wish the Promise/A+ spec has this included, for now, just call requireValue
+ * then you can access the .value field.
+ */
+export function requireValue(promise) {
+    promise.then((resolvedValue) => { promise.value = resolvedValue; });
+    return promise;
 }

@@ -1,7 +1,7 @@
 // syntax: 
 // SEQ(statements);
 
-import {isPromise, getValue, executeStatement} from './Util';
+import {isPromise, executeStatement} from './Util';
 import Statement from './Statement';
 import SequentialStatementGroup from './SequentialStatementGroup';
 

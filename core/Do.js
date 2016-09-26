@@ -1,7 +1,7 @@
 // Syntax
 // DO(statement).WHILE(conditionExpr)
 
-import {isPromise, getValue, executeStatement} from './Util';
+import {isPromise, executeStatement} from './Util';
 import Statement from './Statement';
 import SequentialStatementGroup from './SequentialStatementGroup';
 import BreakError from './BreakError';
@@ -20,7 +20,7 @@ class DoWhileStatement extends Statement {
     run() {
         return Promise.resolve(executeStatement(this.bodyStatement)).then(
             () => {
-                return Promise.resolve(getValue(this.conditionExpr)).then(
+                return Promise.resolve(executeStatement(this.conditionExpr)).then(
                     (resolvedConditionValue) => {
                         if (!resolvedConditionValue) {
                             return Promise.resolve(undefined);

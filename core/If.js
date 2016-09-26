@@ -2,7 +2,7 @@
 // IF (expr).THEN(statement);
 // IF (expr).THEN(statement).ELSE(statement);
 
-import {isPromise, getValue, executeStatement} from './Util';
+import {isPromise, executeStatement} from './Util';
 import Statement from './Statement';
 import SequentialStatementGroup from './SequentialStatementGroup';
 
@@ -24,7 +24,7 @@ class IfStatement extends Statement {
     }
 
     run() {
-        return Promise.resolve(getValue(this.conditionExpr)).then(
+        return Promise.resolve(executeStatement(this.conditionExpr)).then(
             (resolvedConditionValue) => {
                 return this.runWithResolvedCondition(resolvedConditionValue); 
             }
