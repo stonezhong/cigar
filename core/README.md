@@ -1,4 +1,4 @@
-Cigar -- A Javascript framework for asynchronous programming
+# Cigar -- A Javascript framework for asynchronous programming
 
 Using this framework, you can write asynchronous code that is 
 - easy to understand
