@@ -12,15 +12,15 @@
 |[break](break.js)                          |Demo for BREAK statement                                                      |`node js-bundle/break-bundle.js`         |
 
 
+# Before you build
+Make sure you set environment properly
+```
+export PATH=./node_modules/.bin:$PATH
+```
+
 # Build examples
 ```
 npm install
 npm bin
 npm run-script build
-```
-
-# Run a given example
-For example, if you want to run `example1`, just do:
-```
-npm run-script example1
 ```
