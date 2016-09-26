@@ -13,7 +13,13 @@
 
 
 # Before you build
-Make sure you set environment properly
+First, make sure you have node 6.x installed, to check it, run
+```sh
+stonezhong@cloudstar:~$ node --version                                                                                                                                                                                            
+v6.6.0
+```
+
+Second, Make sure you set PATH properly
 ```
 export PATH=./node_modules/.bin:$PATH
 ```
