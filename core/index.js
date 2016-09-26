@@ -6,6 +6,9 @@ import BREAK from './Break';
 import CONTINUE from './Continue';
 import TRY from './Try';
 import THROW from './Throw';
+import SEQ from './Seq';
+
+import { add, ge, g, le, l, eq, ne, mod} from './Math';
 
 global['IF']        = IF;
 global['FOR']       = FOR;
@@ -15,5 +18,18 @@ global['BREAK']     = BREAK;
 global['CONTINUE']  = CONTINUE;
 global['TRY']       = TRY;
 global['THROW']     = THROW;
+global['SEQ']       = SEQ;
+
+global['C']         = {
+    add: add,
+    ge:  ge,
+    g:   g,
+    le:  le,
+    l:   l,
+    eq:  eq,
+    ne:  ne,
+    mod: mod,
+};
+
 
 module.export = {};
