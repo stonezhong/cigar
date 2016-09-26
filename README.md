@@ -1,3 +1,6 @@
+# Cigar -- A JavaScript Framework for Asynchronous Programming
+For details, pls see [Core](core)
+
 # Directories
 
 |Directory                                  |Description                                    |
