@@ -7,9 +7,10 @@ import CONTINUE from './Continue';
 import TRY from './Try';
 import THROW from './Throw';
 import SEQ from './Seq';
+import PARA from './Para';
 
 import { add, mul} from './Math';
-import { requireValue, promisify } from './Util';
+import { requireValue, promisify, SLEEP } from './Util';
 
 global['IF']        = IF;
 global['FOR']       = FOR;
@@ -20,6 +21,8 @@ global['CONTINUE']  = CONTINUE;
 global['TRY']       = TRY;
 global['THROW']     = THROW;
 global['SEQ']       = SEQ;
+global['PARA']      = PARA;
+global['SLEEP']     = SLEEP;
 
 module.exports = {
     add: promisify(add),

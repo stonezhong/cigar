@@ -1,7 +1,7 @@
 // Syntax
 // FOR(initial expression, condition expression, step expression).DO(... statements);
 
-import {isPromise, executeStatement} from './Util';
+import {executeStatement} from './Util';
 import Statement from './Statement';
 import SequentialStatementGroup from './SequentialStatementGroup';
 import BreakError from './BreakError';

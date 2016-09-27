@@ -12,7 +12,7 @@
 //           statement3, and when statement3 is completed, this SEQ([statement1, statement2, statement3])
 //           is considered "completed"
 
-import {isPromise, executeStatement} from './Util';
+import {executeStatement} from './Util';
 import Statement from './Statement';
 import SequentialStatementGroup from './SequentialStatementGroup';
 

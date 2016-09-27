@@ -17,6 +17,6 @@
     "watchify": "^3.7.0"
   },
   "dependencies": {
-    "cigar": "0.0.5"
+    "cigar": "0.0.6"
   }
 }

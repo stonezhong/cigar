@@ -1,5 +1,8 @@
 import Statement from './Statement';
 
+/** 
+ * deprecated 
+ **/
 export function isPromise(value) {
     return (typeof(value) === 'object' &&
         typeof(value.then) === 'function' &&
@@ -26,6 +29,14 @@ export function executeStatement(statement) {
 export function requireValue(promise) {
     promise.then((resolvedValue) => { promise.value = resolvedValue; });
     return promise;
+}
+
+export function SLEEP(duration) {
+    return function() {
+        return (new Promise((resolve, reject) => {
+            setTimeout(resolve, duration);
+        }));
+    }
 }
 
 export function promisify(func) {

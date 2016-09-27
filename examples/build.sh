@@ -9,3 +9,4 @@ browserify js/try1.js -t babelify -o js-bundle/try1-bundle.js -d
 browserify js/try2.js -t babelify -o js-bundle/try2-bundle.js -d
 browserify js/break.js -t babelify -o js-bundle/break-bundle.js -d
 browserify js/continue.js -t babelify -o js-bundle/continue-bundle.js -d
+browserify js/parallel.js -t babelify -o js-bundle/parallel-bundle.js -d

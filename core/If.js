@@ -2,7 +2,7 @@
 // IF (condition expression).THEN(... statements);
 // IF (condition expression).THEN(... statements).ELSE(... statements);
 
-import {isPromise, executeStatement} from './Util';
+import {executeStatement} from './Util';
 import Statement from './Statement';
 import SequentialStatementGroup from './SequentialStatementGroup';
 

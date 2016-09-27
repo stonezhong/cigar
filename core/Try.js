@@ -1,7 +1,7 @@
 // Syntax: TRY(... statements).CATCH(exception handler).FINALLY(... statements)
 // Syntax: TRY(... statements).FINALLY(... statements)
 
-import {isPromise, executeStatement} from './Util';
+import {executeStatement} from './Util';
 import Statement from './Statement';
 import SequentialStatementGroup from './SequentialStatementGroup';
 

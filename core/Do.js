@@ -1,7 +1,7 @@
 // Syntax
 // DO(...statements).WHILE(condition expression)
 
-import {isPromise, executeStatement} from './Util';
+import {executeStatement} from './Util';
 import Statement from './Statement';
 import SequentialStatementGroup from './SequentialStatementGroup';
 import BreakError from './BreakError';
