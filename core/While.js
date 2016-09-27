@@ -1,5 +1,5 @@
 // Syntax
-// WHILE (conditionExpr).DO(statement)
+// WHILE (condition expression).DO(... statements)
 
 import {isPromise, executeStatement} from './Util';
 import Statement from './Statement';

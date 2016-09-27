@@ -1,4 +1,4 @@
-import cigar from 'cigar';
+import * as C from 'cigar';
 import { run } from './common';
 
 /**

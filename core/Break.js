@@ -1,3 +1,7 @@
+// Break out the current loop statement
+// syntax: 
+// BREAK
+
 import BreakError from './BreakError';
 
 let theBreakError = new BreakError();

@@ -1,5 +1,6 @@
 // Syntax
-// FOR(initExpr, conditionExpr, stepExpr).DO(bodyStatement);
+// FOR(initial expression, condition expression, step expression).DO(... statements);
+
 import {isPromise, executeStatement} from './Util';
 import Statement from './Statement';
 import SequentialStatementGroup from './SequentialStatementGroup';

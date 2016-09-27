@@ -8,8 +8,8 @@ import TRY from './Try';
 import THROW from './Throw';
 import SEQ from './Seq';
 
-import { add, ge, g, le, l, eq, ne, mod} from './Math';
-import { requireValue } from './Util';
+import { add, mul} from './Math';
+import { requireValue, promisify } from './Util';
 
 global['IF']        = IF;
 global['FOR']       = FOR;
@@ -21,16 +21,15 @@ global['TRY']       = TRY;
 global['THROW']     = THROW;
 global['SEQ']       = SEQ;
 
-global['C']         = {
-    add: add,
-    ge:  ge,
-    g:   g,
-    le:  le,
-    l:   l,
-    eq:  eq,
-    ne:  ne,
-    mod: mod,
+module.exports = {
+    add: promisify(add),
+    mul: promisify(mul),
+    ge:  promisify((a, b) => a >= b),
+    g:   promisify((a, b) => a > b),
+    le:  promisify((a, b) => a <= b),
+    l:   promisify((a, b) => a < b),
+    eq:  promisify((a, b) => a === b),
+    ne:  promisify((a, b) => a !== b),
+    mod: promisify((a, b) => a % b),
     requireValue: requireValue,
 };
-
-module.export = {};

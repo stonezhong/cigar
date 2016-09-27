@@ -1,5 +1,5 @@
-import cigar from 'cigar';
-import { run, add, log } from './common';
+import * as C from 'cigar';
+import { run, log } from './common';
 
 /**
  * This example shows how IF statement works

@@ -27,3 +27,19 @@ export function requireValue(promise) {
     promise.then((resolvedValue) => { promise.value = resolvedValue; });
     return promise;
 }
+
+export function promisify(func) {
+    return function() {
+        // sometimes arguments is not array, so map cannot be uses
+        let argumentPromises = new Array(arguments.length);
+        for (let i = 0; i < arguments.length; i ++) {
+            argumentPromises[i] = Promise.resolve(arguments[i]);
+        }
+        return Promise.all(argumentPromises).
+            then(
+                (resolvedArgs) => {
+                    return func.apply(null, resolvedArgs);
+                }
+            );
+    }
+}

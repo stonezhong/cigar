@@ -1,3 +1,7 @@
+// Bypass the rest of the loop body
+// syntax: 
+// CONTINUE
+
 import ContinueError from './ContinueError';
 
 let theContinueError = new ContinueError();

@@ -1,6 +1,6 @@
 // syntax: 
-// IF (expr).THEN(statement);
-// IF (expr).THEN(statement).ELSE(statement);
+// IF (condition expression).THEN(... statements);
+// IF (condition expression).THEN(... statements).ELSE(... statements);
 
 import {isPromise, executeStatement} from './Util';
 import Statement from './Statement';
