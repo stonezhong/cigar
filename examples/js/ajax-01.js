@@ -50,7 +50,7 @@ let appMain = SEQ(
  * result = (2 + 3) * (4 + 5)
  * 
  * Output: 
- * sum=45
+ * (2 + 3)*(4 + 5) = 45
  * Done
  */
 run(appMain);
