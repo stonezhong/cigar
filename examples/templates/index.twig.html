@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>Cigar Demos</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+    <h1>
+        Cigar -- A JavaScript Framework for Asynchronous Programming
+    </h1>
+
+    <p>Source code is at <a href="https://github.com/stonezhong/cigar">github.com</a></p>
+
+    <table class="grid">
+        {% for key, value in examples %}
+            <tr>
+                <td><a target="_blank" href="run-example.php?example={{key}}">{{key}}</a></td>
+                <td>{{value}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+</body>
+
+</html>

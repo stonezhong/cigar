@@ -1,0 +1,15 @@
+table.grid {
+    border-collapse: collapse;
+}
+table.grid > tbody > tr >th,  table.grid > tbody > tr >td {
+    padding: 4px;
+    border: 1px solid;
+}
+
+pre {
+    margin: 4px;
+}
+
+#output {
+    background-color: coral;
+}

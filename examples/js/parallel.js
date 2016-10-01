@@ -1,5 +1,5 @@
 import * as C from 'cigar';
-import { run } from './common';
+import { run, printf } from './common';
 
 /**
  * This demo shows you can create "fiber" -- each has it's own context and runs in parallel.
@@ -11,7 +11,7 @@ let task1 = (() => {
     return SEQ(
         WHILE(() => i <= 5 ).
         DO(
-            () => console.log(`from task 1: i = ${i}`),
+            () => printf('from task 1: i = %d', i),
             SLEEP(1000),
             () => { i ++ }
         )
@@ -23,7 +23,7 @@ let task2 = (() => {
     return SEQ(
         WHILE(() => i <= 3 ).
         DO(
-            () => console.log(`from task 2: i = ${i}`),
+            () => printf('from task 2: i = %d', i),
             SLEEP(1500),
             () => { i ++ }
         )

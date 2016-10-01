@@ -1,5 +1,5 @@
 import * as C from 'cigar';
-import { run, log } from './common';
+import { run, printf } from './common';
 
 /**
  * This example shows how IF statement works
@@ -18,9 +18,9 @@ let appMain = SEQ(
     IF(
         () => C.ge(x, 6)
     ).
-        THEN(() => { console.log("x is too big"); }).
-        ELSE(() => { console.log("x is ok"); }),
-    () => { log('x=', x); }
+        THEN(() => { printf("x is too big"); }).
+        ELSE(() => { printf("x is ok"); }),
+    () => { printf('x=%d', x); }
 );
 
 /**

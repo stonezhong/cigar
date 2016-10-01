@@ -1,5 +1,5 @@
 import * as C from 'cigar';
-import { run, log } from './common';
+import { run, printf } from './common';
 
 /**
  * This example shows how to use SEQ to run bunch of statements
@@ -16,7 +16,7 @@ let appMain = SEQ(
     () => { x = C.add(1, 2); return x;},
     () => { y = C.add(3, 4); return y;},
     () => { sum = C.add(x, y); return sum;},
-    () => { log('sum=', sum); }
+    () => { printf('sum=%d', sum); }
 );
 
 /**

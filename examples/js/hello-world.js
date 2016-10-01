@@ -1,5 +1,5 @@
 import * as C from 'cigar';
-import { run } from './common';
+import { run, printf } from './common';
 
 /**
  * This is a "Hello world" example for using Cigar
@@ -8,7 +8,7 @@ import { run } from './common';
 
 let appMain = SEQ(
     () => {
-        console.log("Hello, world");
+        printf("Hello, world");
     }
 );
 

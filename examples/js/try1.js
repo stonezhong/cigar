@@ -1,5 +1,5 @@
 import * as C from 'cigar';
-import { run, log } from './common';
+import { run, printf } from './common';
 
 /**
  * This example shows how to use TRY...CATCH...FINALLY to handle exceptions
@@ -13,18 +13,18 @@ import { run, log } from './common';
 
 let appMain = 
     TRY(
-        () => { console.log("step 1"); },
-        () => { console.log("step 2"); },
+        () => { printf("step 1"); },
+        () => { printf("step 2"); },
         THROW("i am bored"),
-        () => { console.log("step 3"); },           // you won't see "step 3" gets printed since we throw exception in the line above
+        () => { printf("step 3"); },           // you won't see "step 3" gets printed since we throw exception in the line above
     ).
     CATCH(
         (e) => {
-            console.log(`Caught exception: ${e}`);   // we are absorbing the exception since we didn't throw new exception
+            printf(`Caught exception: ${e}`);   // we are absorbing the exception since we didn't throw new exception
         }
     ).
     FINALLY(
-        () => { console.log("Well, my job is done"); },
+        () => { printf("Well, my job is done"); },
     ); 
 
 /**

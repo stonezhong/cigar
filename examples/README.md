@@ -1,17 +1,19 @@
 # Examples
 
-|Directory                                  |Description                                                                   | Play with it                            |
-|-------------------------------------------|------------------------------------------------------------------------------|-----------------------------------------|
-|[hello-world](js/hello-world.js)           |"Hello world" style simple example.                                           |`node js-bundle/hello-world-bundle.js`   |
-|[sequential](js/sequential.js)             |Run bunch of statement sequentially, each statement could be asynchronous     |`node js-bundle/sequential-bundle.js`    |
-|[parallel](js/parallel.js)                 |Run bunch of statement in parallel, each statement could be asynchronous      |`node js-bundle/parallel-bundle.js`      |
-|[if](js/if.js)                             |Demo for IF...THEN...ELSE statement                                           |`node js-bundle/if-bundle.js`            |
-|[for](js/for.js)                           |Demo for FOR(initExpr, conditionExpr, stepExpr).DO(statements) statement      |`node js-bundle/for-bundle.js`           |
-|[try1](js/try1.js)                         |Demo 1 for TRY(statements).CATCH(handler).FINALLY(statements) statement       |`node js-bundle/try1-bundle.js`          |
-|[try2](js/try2.js)                         |Demo 1 for TRY(statements).CATCH(handler).FINALLY(statements) statement       |`node js-bundle/try1-bundle.js`          |
-|[continue](js/continue.js)                 |Demo for CONTINUE statement                                                   |`node js-bundle/continue-bundle.js`      |
-|[break](js/break.js)                       |Demo for BREAK statement                                                      |`node js-bundle/break-bundle.js`         |
+<p>Click <a href="http://vm1.stonezhong.net/">here</a> to see live demos.</p>
 
+|Directory                                  |Description                                                                   | Play with it                                                           |
+|-------------------------------------------|------------------------------------------------------------------------------|------------------------------------------------------------------------|
+|[hello-world](js/hello-world.js)           |"Hello world" style simple example.                                           |[here](http://vm1.stonezhong.net/run-example.php?example=hello-world)   |
+|[sequential](js/sequential.js)             |Run bunch of statement sequentially, each statement could be asynchronous     |[here](http://vm1.stonezhong.net/run-example.php?example=sequential)    |
+|[if](js/if.js)                             |Demo for IF...THEN...ELSE statement                                           |[here](http://vm1.stonezhong.net/run-example.php?example=if)            |
+|[for](js/for.js)                           |Demo for FOR(initExpr, conditionExpr, stepExpr).DO(statements) statement      |[here](http://vm1.stonezhong.net/run-example.php?example=if)            |
+|[continue](js/continue.js)                 |Demo for CONTINUE statement                                                   |[here](http://vm1.stonezhong.net/run-example.php?example=continue)      |
+|[break](js/break.js)                       |Demo for BREAK statement                                                      |[here](http://vm1.stonezhong.net/run-example.php?example=break)         |
+|[try1](js/try1.js)                         |Demo 1 for TRY(statements).CATCH(handler).FINALLY(statements) statement       |[here](http://vm1.stonezhong.net/run-example.php?example=try1)          |
+|[try2](js/try2.js)                         |Demo 1 for TRY(statements).CATCH(handler).FINALLY(statements) statement       |[here](http://vm1.stonezhong.net/run-example.php?example=try2)          |
+|[parallel](js/parallel.js)                 |Run bunch of statement in parallel, each statement could be asynchronous      |[here](http://vm1.stonezhong.net/run-example.php?example=parallel)      |
+|[ajax-01](js/ajax-01.js)                   |Run bunch of statement in parallel, each statement could be asynchronous      |[here](http://vm1.stonezhong.net/run-example.php?example=ajax-01)       |
 
 # Before you build
 First, make sure you have node 6.x installed, to check it, run

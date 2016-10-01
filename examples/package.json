@@ -17,6 +17,8 @@
     "watchify": "^3.7.0"
   },
   "dependencies": {
-    "cigar": "0.0.6"
+    "cigar": "0.0.7",
+    "jquery": "^3.1.1",
+    "utils": "^0.3.1"
   }
 }

@@ -1,5 +1,5 @@
 import * as C from 'cigar';
-import { run, log } from './common';
+import { run, printf } from './common';
 
 /**
  * This example shows how to use CONTINUE statement to shortcut the loop body
@@ -22,7 +22,7 @@ let appMain = SEQ(
         ).THEN(CONTINUE),
         () => { sum = C.add(sum, i); return sum; },  // the body for the FOR statement, this statement can be asynchronous as C.add returns a promise
     ),
-    () => { log('sum=', sum); }
+    () => { printf('sum=%d', sum); }
 );
 
 /**

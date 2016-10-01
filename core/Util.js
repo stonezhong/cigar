@@ -54,3 +54,9 @@ export function promisify(func) {
             );
     }
 }
+
+export function transform(value, transformer) {
+    return Promise.resolve(value).then((resolvedValue) => {
+        return transformer(resolvedValue);
+    });
+}

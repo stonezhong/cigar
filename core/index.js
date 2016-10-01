@@ -10,7 +10,7 @@ import SEQ from './Seq';
 import PARA from './Para';
 
 import { add, mul} from './Math';
-import { requireValue, promisify, SLEEP } from './Util';
+import { requireValue, promisify, transform, SLEEP } from './Util';
 
 global['IF']        = IF;
 global['FOR']       = FOR;
@@ -25,6 +25,8 @@ global['PARA']      = PARA;
 global['SLEEP']     = SLEEP;
 
 module.exports = {
+    promisify: promisify,
+    transform: transform,
     add: promisify(add),
     mul: promisify(mul),
     ge:  promisify((a, b) => a >= b),
