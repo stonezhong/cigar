@@ -9,10 +9,20 @@
 </head>
 
 <body>
-    <p>
-        <a href="js/{{example}}.js">{{example}}.js</a>
-    </p>
-    <div id="output"></div>
+    <div class="outputWrapper" class="output">
+        <h2>Output</h2>
+        <hr />
+        <div id="output"></div>
+    </div>
+    <div class="codeWrapper">
+        <h2>Source code (<a href="https://github.com/stonezhong/cigar/blob/master/examples/js/{{example}}.js">github.com</a>)</h2>
+        <hr />
+        <div id="code">
+<pre>
+{% include example ~ ".js" %}
+</pre>
+        </div>
+    </div>
 </body>
 
 </html>

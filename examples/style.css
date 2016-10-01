@@ -10,6 +10,16 @@ pre {
     margin: 4px;
 }
 
-#output {
-    background-color: coral;
+.outputWrapper {
+    width: 300px;
+    float: left;
+    background-color: lightgray;
 }
+
+.codeWrapper {
+    float: left;
+    background-color: lightgray;
+    margin-left: 4px;
+}
+
+
