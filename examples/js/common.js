@@ -3,7 +3,7 @@ import * as C from 'cigar';
 import { format } from 'util';
 
 export function run(statement) {
-    $(function() {
+    let execute = function() {
         statement.run().then(
             () => {
                 printf("Done");
@@ -12,7 +12,17 @@ export function run(statement) {
                 printf(`got error: ${e}`);
             }
         );
+    };
+
+    $(function() {
+        $(execute);
+
+        $("#run").click(() => {
+            $("#output").empty();
+            execute();
+        });
     });
+     
 }
 
 export const printf = C.promisify(function() {
