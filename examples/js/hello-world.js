@@ -7,9 +7,9 @@ import { run, printf } from './common';
  */
 
 let appMain = SEQ(
-    () => {
+    (local) => {
         printf("Hello, world");
-    }
+    },
 );
 
 /**

@@ -8,9 +8,10 @@ import TRY from './Try';
 import THROW from './Throw';
 import SEQ from './Seq';
 import PARA from './Para';
+import LET from './Let';
 
 import { add, mul} from './Math';
-import { requireValue, promisify, transform, SLEEP } from './Util';
+import { requireValue, promisify, transform, SLEEP, executeStatement } from './Util';
 
 global['IF']        = IF;
 global['FOR']       = FOR;
@@ -23,8 +24,10 @@ global['THROW']     = THROW;
 global['SEQ']       = SEQ;
 global['PARA']      = PARA;
 global['SLEEP']     = SLEEP;
+global['LET']       = LET;
 
 module.exports = {
+    executeStatement: executeStatement,
     promisify: promisify,
     transform: transform,
     add: promisify(add),

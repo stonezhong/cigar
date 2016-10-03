@@ -17,15 +17,15 @@ class DoWhileStatement extends Statement {
         this.run = this.run.bind(this);
     }
 
-    run() {
-        return Promise.resolve(executeStatement(this.bodyStatement)).then(
+    run(scopeContext) {
+        return Promise.resolve(executeStatement(this.bodyStatement, scopeContext)).then(
             () => {
-                return Promise.resolve(executeStatement(this.conditionExpr)).then(
+                return Promise.resolve(executeStatement(this.conditionExpr, scopeContext)).then(
                     (resolvedConditionValue) => {
                         if (!resolvedConditionValue) {
                             return Promise.resolve(undefined);
                         }
-                        return this.run();
+                        return this.run(scopeContext);
                     }
                 );
             },
@@ -34,7 +34,7 @@ class DoWhileStatement extends Statement {
                     return Promise.resolve(undefined);
                 }
                 if (error instanceof ContinueError) {
-                    return this.run();
+                    return this.run(scopeContext);
                 }
                 return error; // unhandled error
             }

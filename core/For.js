@@ -1,7 +1,7 @@
 // Syntax
 // FOR(initial expression, condition expression, step expression).DO(... statements);
 
-import {executeStatement} from './Util';
+import {executeStatementWithContext} from './Util';
 import Statement from './Statement';
 import SequentialStatementGroup from './SequentialStatementGroup';
 import BreakError from './BreakError';
@@ -22,35 +22,47 @@ class ForStatement extends Statement {
         this.runLoop = this.runLoop.bind(this);
     }
 
-    runLoopWithResolvedConditionValue(resolvedConditionValue) {
+    runLoopWithResolvedConditionValue(resolvedConditionValue, scopeContext) {
         if (!resolvedConditionValue) {
             return Promise.resolve(undefined);
         }
 
-        return Promise.resolve(executeStatement(this.bodyStatement)).then(
+        return Promise.resolve(executeStatementWithContext(this.bodyStatement, scopeContext)).then(
             () => {
-                return Promise.resolve(executeStatement(this.stepExpr)).then(this.runLoop);
+                return Promise.resolve(executeStatementWithContext(this.stepExpr, scopeContext)).then(
+                    () => {
+                        return this.runLoop(scopeContext);
+                    }
+                );
             }, 
             (error) => {
                 if (error instanceof BreakError) {
                     return Promise.resolve(undefined);
                 }
                 if (error instanceof ContinueError) {
-                    return Promise.resolve(executeStatement(this.stepExpr)).then(this.runLoop);
+                    return Promise.resolve(executeStatementWithContext(this.stepExpr, scopeContext)).then(
+                        () => {
+                            return this.runLoop(scopeContext);
+                        }
+                    );
                 }
                 return error; // unhandled error
             }
         );
     }
 
-    runLoop() {
-        return Promise.resolve(executeStatement(this.conditionExpr)).then((resolvedConditionValue) => {
-            return this.runLoopWithResolvedConditionValue(resolvedConditionValue);
+    runLoop(scopeContext) {
+        return Promise.resolve(executeStatementWithContext(this.conditionExpr, scopeContext)).then((resolvedConditionValue) => {
+            return this.runLoopWithResolvedConditionValue(resolvedConditionValue, scopeContext);
         });
     }
 
-    run() {
-        return Promise.resolve(executeStatement(this.initExpr)).then(this.runLoop);
+    run(scopeContext) {
+        return Promise.resolve(executeStatementWithContext(this.initExpr, scopeContext)).then(
+            () => {
+                return this.runLoop(scopeContext);
+            }
+        );
     }
 }
 

@@ -7,18 +7,18 @@ export default class SequentialStatementGroup extends Statement {
         this.statements = statements;
     }
 
-    run() {
-        return this.runWithIndex(0);
+    run(scopeContext) {
+        return this.runWithIndex(0, scopeContext);
     }
 
-    runWithIndex(index) {
+    runWithIndex(index, scopeContext) {
         if (index >= this.statements.length) {
             return Promise.resolve(undefined);
         }
 
-        return Promise.resolve(executeStatement(this.statements[index])).then(
+        return Promise.resolve(executeStatement(this.statements[index], scopeContext)).then(
             () => {
-                return this.runWithIndex(index + 1);
+                return this.runWithIndex(index + 1, scopeContext);
             }
         );
     }

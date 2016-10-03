@@ -7,10 +7,10 @@ export default class ParallelStatementGroup extends Statement {
         this.statements = statements;
     }
 
-    run() {
+    run(scopeContext) {
         let returnValues = new Array(this.statements.length);
         for (let i = 0; i < this.statements.length; i ++) {
-            returnValues[i] = Promise.resolve(executeStatement(this.statements[i]));
+            returnValues[i] = Promise.resolve(executeStatement(this.statements[i], scopeContext));
         }
         return Promise.all(returnValues).then(
             (resolvedReturnValues) => {

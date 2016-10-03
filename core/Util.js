@@ -1,4 +1,5 @@
 import Statement from './Statement';
+import ScopeContext from './ScopeContext';
 
 /** 
  * deprecated 
@@ -9,16 +10,32 @@ export function isPromise(value) {
         typeof(value.catch) === 'function');
 }
 
-export function executeStatement(statement) {
+export function executeStatementWithContext(statement, scopeContext) {
     if (statement instanceof Statement) {
-        return statement.run();
+        try {
+            return statement.run(scopeContext);
+        } catch (e) {
+            return Promise.reject(e);
+        }
     }
 
-    if (statement && statement.constructor && statement.call && statement.apply && statement.length == 0) {
-        return statement();
+    // when statement is a function, it can choose to take 0 or 1 argument
+    if (statement && statement.constructor && statement.call && statement.apply && statement.length <= 1) {
+        try {
+            return statement(scopeContext.accessor);
+        } catch (e) {
+            return Promise.reject(e);
+        }
     }
 
     return statement;
+}
+
+export function executeStatement(statement, parentScopeContext) {
+    return executeStatementWithContext(
+        statement, 
+        new ScopeContext(parentScopeContext)
+    );
 }
 
 /**

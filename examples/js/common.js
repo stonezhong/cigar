@@ -4,7 +4,7 @@ import { format } from 'util';
 
 export function run(statement) {
     let execute = function() {
-        statement.run().then(
+        C.executeStatement(statement, null).then(
             () => {
                 printf("Done");
             },

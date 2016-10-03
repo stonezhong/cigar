@@ -15,18 +15,18 @@ class IfStatement extends Statement {
         this.conditionExpr = conditionExpr;
     }
 
-    runWithResolvedCondition(resolvedConditionValue) {
+    runWithResolvedCondition(resolvedConditionValue, scopeContext) {
         if (resolvedConditionValue) {
-            return executeStatement(this.trueBranchStatement);
+            return executeStatement(this.trueBranchStatement, scopeContext);
         } else {
-            return executeStatement(this.falseBranchStatement);
+            return executeStatement(this.falseBranchStatement, scopeContext);
         }
     }
 
-    run() {
-        return Promise.resolve(executeStatement(this.conditionExpr)).then(
+    run(scopeContext) {
+        return Promise.resolve(executeStatement(this.conditionExpr, scopeContext)).then(
             (resolvedConditionValue) => {
-                return this.runWithResolvedCondition(resolvedConditionValue); 
+                return this.runWithResolvedCondition(resolvedConditionValue, scopeContext); 
             }
         );
     }
@@ -61,8 +61,8 @@ class IfConditionThenStatement extends Statement {
         return this.ifStatement;
     }
 
-    run() {
-        return this.ifStatement.run();
+    run(scopeContext) {
+        return this.ifStatement.run(scopeContext);
     }
 }
 

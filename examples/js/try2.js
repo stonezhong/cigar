@@ -20,11 +20,8 @@ let appMain =
     ).
     CATCH(
         (e) => {
-            return SEQ(
-                () => { printf(`Caught exception: ${e}`) },
-                // we are throwing out a different exception
-                THROW('something wrong happened')
-            ).run();
+            printf(`Caught exception: ${e}`);
+            throw new Error('something wrong happened');
         }
     ).
     FINALLY(
@@ -32,11 +29,14 @@ let appMain =
     ); 
 
 /**
+ * You see line "got error: Error: something wrong happened" because we throw a new 
+ * exception in the catch block.
+ * 
  * Output: 
  * step 1
  * step 2
  * Caught exception: i am bored
  * Well, my job is done
- * got error: something wrong happened
+ * got error: Error: something wrong happened
  */
 run(appMain);
