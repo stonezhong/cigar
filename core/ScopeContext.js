@@ -5,7 +5,7 @@ export default class ScopeContext {
         this.accessor = {};
         // copy properties from parent
         if (parent !== null) {
-            for (let propertyName in parent.ctx) {
+            for (let propertyName in parent.accessor) {
                 this.defineVariable(propertyName);
             }
         }

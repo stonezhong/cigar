@@ -46,7 +46,7 @@ class ForStatement extends Statement {
                         }
                     );
                 }
-                return error; // unhandled error
+                throw error; // unhandled error
             }
         );
     }
