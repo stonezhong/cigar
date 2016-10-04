@@ -36,7 +36,7 @@ export default class ScopeContext {
                 return newValue;
             },
             enumerable: true,  // this is required for calling function with destructuring parameter
-            configurable: false
+            configurable: true
         });
     }
 }

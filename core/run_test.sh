@@ -10,6 +10,7 @@ browserify test/try_tf.js   -t babelify -o test/js-bundle/try_tf-bundle.js -d
 browserify test/try_tcf.js  -t babelify -o test/js-bundle/try_tcf-bundle.js -d
 browserify test/do.js       -t babelify -o test/js-bundle/do-bundle.js -d
 browserify test/while.js    -t babelify -o test/js-bundle/while-bundle.js -d
+browserify test/let.js      -t babelify -o test/js-bundle/let-bundle.js -d
 
 # mocha test/js-bundle/seq-bundle.js
 # mocha $(find "test/js-bundle" -name '*.js'
