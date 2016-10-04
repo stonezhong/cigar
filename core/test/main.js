@@ -2,14 +2,14 @@ var Mocha = require('mocha');
 
 
 var files = [
-  'test/js-bundle/seq-bundle.js',
-  'test/js-bundle/if-bundle.js',
-  'test/js-bundle/for-bundle.js',
-  'test/js-bundle/try_tc-bundle.js',
-  'test/js-bundle/try_tf-bundle.js',
-  'test/js-bundle/try_tcf-bundle.js',
-  'test/js-bundle/do-bundle.js',
-  'test/js-bundle/while-bundle.js',
+    'test/js-bundle/seq-bundle.js',
+    'test/js-bundle/if-bundle.js',
+    'test/js-bundle/for-bundle.js',
+    'test/js-bundle/try_tc-bundle.js',
+    'test/js-bundle/try_tf-bundle.js',
+    'test/js-bundle/try_tcf-bundle.js',
+    'test/js-bundle/do-bundle.js',
+    'test/js-bundle/while-bundle.js',
 ];
 
 function runTest(index, callback) {

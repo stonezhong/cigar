@@ -36,7 +36,7 @@ class DoWhileStatement extends Statement {
                 if (error instanceof ContinueError) {
                     return this.run(scopeContext);
                 }
-                return error; // unhandled error
+                throw error; // unhandled error
             }
         );
     }
