@@ -12,15 +12,16 @@ import { run, printf } from './common';
 var i;
 var sum;
 let appMain = SEQ(
-    FOR(
-        () => { i = 0; sum = 0; },              // initialize for the FOR statement
-        () => { return C.le(i, 10); },          // check condition for the FOR statement, this expression can be asynchronous as C.le returns a promise
-        () => { i = C.add(i, 1); return i; },   // step expression for the FOR statement, this expression can be asynchronous as C.add returns a promise
-    ).DO(
-        () => { sum = C.add(sum, i); return sum; },  // the body for the FOR statement, this statement can be asynchronous as C.add returns a promise
-        IF(() => C.ge(i, 5)).THEN(BREAK),            // if i reaches 5, break out
-    ),
-    () => { printf('sum=%d', sum); }
+    LET("sum", 0),                                          // let sum = 0;
+    FOR(                                                    // for (
+        LET("i", 0),                                        //     let i = 0,
+        ({i}) => C.le(i, 10) ,                              //     i <= 10,
+        (local) => local.i = C.add(local.i, 1)              //     i = i + 1
+    ).DO(                                                   // ) {
+        (local) => local.sum = C.add(local.sum, local.i),   //     sum = sum + i;
+        IF(({i}) => C.ge(i, 5)).THEN(BREAK),                //     if (i >= 5) break;
+    ),                                                      // }
+    ({sum}) => printf('sum=%d', sum)                        // printf("sum=%d", sum);
 );
 
 /**
