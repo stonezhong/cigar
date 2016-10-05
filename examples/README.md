@@ -7,7 +7,7 @@
 |[hello-world](js/hello-world.js)           |"Hello world" style simple example.                                           |[here](http://vm1.stonezhong.net/run-example.php?example=hello-world)   |
 |[sequential](js/sequential.js)             |Run bunch of statement sequentially, each statement could be asynchronous     |[here](http://vm1.stonezhong.net/run-example.php?example=sequential)    |
 |[if](js/if.js)                             |Demo for IF...THEN...ELSE statement                                           |[here](http://vm1.stonezhong.net/run-example.php?example=if)            |
-|[for](js/for.js)                           |Demo for FOR(initExpr, conditionExpr, stepExpr).DO(statements) statement      |[here](http://vm1.stonezhong.net/run-example.php?example=if)            |
+|[for](js/for.js)                           |Demo for FOR(initExpr, conditionExpr, stepExpr).DO(statements) statement      |[here](http://vm1.stonezhong.net/run-example.php?example=for)           |
 |[continue](js/continue.js)                 |Demo for CONTINUE statement                                                   |[here](http://vm1.stonezhong.net/run-example.php?example=continue)      |
 |[break](js/break.js)                       |Demo for BREAK statement                                                      |[here](http://vm1.stonezhong.net/run-example.php?example=break)         |
 |[try1](js/try1.js)                         |Demo 1 for TRY(statements).CATCH(handler).FINALLY(statements) statement       |[here](http://vm1.stonezhong.net/run-example.php?example=try1)          |
