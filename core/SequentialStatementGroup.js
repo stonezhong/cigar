@@ -7,6 +7,10 @@ export default class SequentialStatementGroup extends Statement {
         this.statements = statements;
     }
 
+    requireNewScopeContext() {
+        return true;   
+    }
+
     run(scopeContext) {
         return this.runWithIndex(0, scopeContext);
     }

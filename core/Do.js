@@ -17,6 +17,10 @@ class DoWhileStatement extends Statement {
         this.run = this.run.bind(this);
     }
 
+    requireNewScopeContext() {
+        return true;   
+    }
+
     run(scopeContext) {
         return Promise.resolve(executeStatement(this.bodyStatement, scopeContext)).then(
             () => {

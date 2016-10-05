@@ -16,6 +16,10 @@ class WhileStatement extends Statement {
         this.conditionExpr = conditionExpr;
     }
 
+    requireNewScopeContext() {
+        return true;   
+    }
+
     run(scopeContext) {
         return Promise.resolve(executeStatement(this.conditionExpr, scopeContext)).then(
             (resolvedConditionValue) => {

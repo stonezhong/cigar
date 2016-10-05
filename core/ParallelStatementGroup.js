@@ -7,6 +7,10 @@ export default class ParallelStatementGroup extends Statement {
         this.statements = statements;
     }
 
+    requireNewScopeContext() {
+        return true;   
+    }
+
     run(scopeContext) {
         let returnValues = new Array(this.statements.length);
         for (let i = 0; i < this.statements.length; i ++) {

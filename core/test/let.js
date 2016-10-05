@@ -86,9 +86,7 @@ describe('LET statement', function() {
                 LET("foo", "A"),
                 SEQ(
                     LET("foo", "B"),
-                    ({foo}) => {
-                        a += foo;
-                    },
+                    ({foo}) => { a += foo; }
                 ),
                 ({foo}) => {
                     a += foo;
@@ -108,9 +106,7 @@ describe('LET statement', function() {
                 SEQ(
                     LET("sum", 0),
                     FOR(
-                        SEQ(
-                            LET("i", 1)
-                        ),
+                        LET("i", 1),
                         ({i}) => { return i <= 10; },
                         (local) => {
                             local.i ++;

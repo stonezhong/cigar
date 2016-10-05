@@ -10,7 +10,7 @@ export function isPromise(value) {
         typeof(value.catch) === 'function');
 }
 
-export function executeStatementWithContext(statement, scopeContext) {
+function executeStatementWithContext(statement, scopeContext) {
     if (statement instanceof Statement) {
         try {
             return statement.run(scopeContext);
@@ -32,10 +32,10 @@ export function executeStatementWithContext(statement, scopeContext) {
 }
 
 export function executeStatement(statement, parentScopeContext) {
-    return executeStatementWithContext(
-        statement, 
-        new ScopeContext(parentScopeContext)
-    );
+    let effectiveScopeContext = (statement instanceof Statement) ? 
+        (statement.requireNewScopeContext() ? new ScopeContext(parentScopeContext) : parentScopeContext) : parentScopeContext;
+
+    return executeStatementWithContext(statement, effectiveScopeContext);
 }
 
 /**

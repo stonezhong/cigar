@@ -16,9 +16,8 @@ class LetStatement extends Statement {
 
     run(scopeContext) {
         let variableValue = executeStatement(this.expression, scopeContext);
-        let parentScopeContext = scopeContext.parent;
-        parentScopeContext.ctx[this.variableName] = variableValue;
-        parentScopeContext.defineVariable(this.variableName);
+        scopeContext.ctx[this.variableName] = variableValue;
+        scopeContext.defineVariable(this.variableName);
         return Promise.resolve(variableValue);
     }
 }
