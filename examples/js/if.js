@@ -13,22 +13,21 @@ var x;
 var y;
 
 let appMain = SEQ(
-    () => { x = C.add(3, 4); return x;},
-    
-    IF(
-        () => C.ge(x, 6)
-    ).
-        THEN(() => { printf("x is too big"); }).
-        ELSE(() => { printf("x is ok"); }),
-    () => { printf('x=%d', x); }
+    LET("x"),                                       // let x;
+    LET("y", 6),                                    // let y = 6;
+    (local) => local.x = C.add(3, 4),               // x = add(3, 4);
+    IF(({x}) => C.ge(x, 6)).                        // if (x >= 6) {
+        THEN(({x}) => printf("%d is too big", x)).  //     printf("%d is too big", x); }
+        ELSE(({x}) => printf("x is ok")),           // } else { printf("%d is ok", x); }
+    ({x}) => { printf('x=%d', x); }
 );
 
 /**
  * Since 7 >= 6
  * 
  * Output: 
- * x is too big
- * x= 7
+ * 7 is too big
+ * x=7
  * Done
  */
 run(appMain);

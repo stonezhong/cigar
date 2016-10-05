@@ -10,20 +10,18 @@ import { run, printf } from './common';
  * 
  */
 
-var x, y;
-var sum;
 let appMain = SEQ(
-    () => { x = C.add(1, 2); return x;},
-    () => { y = C.add(3, 4); return y;},
-    () => { sum = C.add(x, y); return sum;},
-    () => { printf('sum=%d', sum); }
+    LET("x", C.add(1, 2)),                  // let x = 1 + 2;
+    LET("y", C.add(3, 4)),                  // let y = 3 + 4;
+    LET("sum", ({x, y}) => C.add(x, y)),    // let sum = x + y;
+    ({sum}) => { printf('sum=%d', sum); }   // printf('sum=%d', sum);
 );
 
 /**
  * sum = (1 + 2) + (3 + 4)
  * 
  * Output: 
- * sum= 10
+ * sum=10
  * Done
  */
 run(appMain);

@@ -12,26 +12,26 @@ import { run, printf } from './common';
  */
 
 let appMain = 
-    TRY(
-        () => { printf("step 1"); },
-        () => { printf("step 2"); },
-        THROW("i am bored"),
-        () => { printf("step 3"); },           // you won't see "step 3" gets printed since we throw exception in the line above
-    ).
-    CATCH(
-        (e) => {
-            printf(`Caught exception: ${e}`);   // we are absorbing the exception since we didn't throw new exception
-        }
-    ).
-    FINALLY(
-        () => { printf("Well, my job is done"); },
-    ); 
+    TRY(                                                // try {
+        () => printf("step 1"),                         //     printf("step 1");
+        () => printf("step 2"),                         //     printf("step 2");
+        THROW("Oops"),                                  //     throw("Oops");
+        () => printf("step 3")                          //     printf("step 3");
+    ).                                                  // }
+    CATCH(                                              // catch(e) { 
+        (e) => {                                        // 
+            printf(`Caught exception: ${e}`);           //     printf(`Caught exception: ${e}`);
+        }                                               //
+    ).                                                  // }
+    FINALLY(                                            // finally {
+        () => { printf("Well, my job is done"); },      //     printf("Well, my job is done");
+    );                                                  // }
 
 /**
  * Output: 
  * step 1
  * step 2
- * Caught exception: i am bored
+ * Caught exception: Oops
  * Well, my job is done
  * Done
  */
