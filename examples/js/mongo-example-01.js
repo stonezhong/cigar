@@ -70,26 +70,25 @@ for (let key in DB) {
 }
 
 const appMain = SEQ(
-    LET("db", () => DB.connect('mongodb://localhost:27017/mean-demo')),                 // let db = DB.connect('mongodb://localhost:27017/mean-demo') 
-    LET("stockQuotes", ({db}) => DB.queryCollection(db, "stockQuotes")),                // let stockQuotes = DB.queryCollection(db, "stockQuotes");
-    LET("stockQuote"),                                                                  // let stockQuote;
-    SYNC("db", "stockQuotes"),  // local variable db and stockQuote are resolved        // local variable db and stockQuotes gets resolved from promise
-    DO(                                                                                 // do {
-        (local) => local.stockQuote = DB.nextObject(local.stockQuotes),                 //     stockQuote = DB.nextObject(stockQuotes) 
-        SYNC("stockQuote"),                                                             //     local variable stockQuotes gets resolved from promise
-        IF(                                                                             //     if (!stockQuote) {
-            ({stockQuote}) => !stockQuote                                               //
-        ).THEN(BREAK),                                                                  //         break; }
-        ({stockQuote}) => {                                                             //
-            printf("symbol: %s, bid: %d, ask: %d",                                      //     printf("symbol:%s, bid: %d, ask: %d", ...); 
+    LET("db", () => DB.connect('mongodb://localhost:27017/mean-demo')),      // let db = DB.connect('mongodb://localhost:27017/mean-demo') 
+    LET("stockQuotes", ({db}) => DB.queryCollection(db, "stockQuotes")),     // let stockQuotes = DB.queryCollection(db, "stockQuotes");
+    LET("stockQuote"),                                                       // let stockQuote;
+    SYNC("db", "stockQuotes"),                                               // local variable db and stockQuotes gets resolved from promise
+    DO(                                                                      // do {
+        (local) => local.stockQuote = DB.nextObject(local.stockQuotes),      //     stockQuote = DB.nextObject(stockQuotes) 
+        SYNC("stockQuote"),                                                  //     local variable stockQuotes gets resolved from promise
+        IF(                                                                  //     if (!stockQuote) {
+            ({stockQuote}) => !stockQuote                                    //
+        ).THEN(BREAK),                                                       //         break; }
+        ({stockQuote}) => {                                                  //
+            printf("symbol: %s, bid: %d, ask: %d",                           //     printf("symbol:%s, bid: %d, ask: %d", ...); 
                 stockQuote.symbol, 
                 stockQuote.bidPrice, 
                 stockQuote.askPrice);
         },
-    ).WHILE(() => true),                                                                // } while (true);
-    ({db}) => DB.close(db, false),                                                      // DB.close(db, false);
+    ).WHILE(() => true),                                                     // } while (true);
+    ({db}) => DB.close(db, false),                                           // DB.close(db, false);
 );
-
 
 /**
  * Output: 
