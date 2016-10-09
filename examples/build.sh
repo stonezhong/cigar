@@ -11,3 +11,4 @@ browserify js/break.js -t babelify -o js-bundle/break-bundle.js -d
 browserify js/continue.js -t babelify -o js-bundle/continue-bundle.js -d
 browserify js/parallel.js -t babelify -o js-bundle/parallel-bundle.js -d
 browserify js/ajax-01.js -t babelify -o js-bundle/ajax-01-bundle.js -d
+browserify js/mongo-example-01.js --bare -t babelify -o js-bundle/mongo-example-01-bundle.js -d

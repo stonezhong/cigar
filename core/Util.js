@@ -42,16 +42,6 @@ export function executeProgram(statement) {
     return executeStatementWithContext(statement, new ScopeContext(null));
 }
 
-/**
- * So far, there is no way to get an already resolved promise's value synchronously,
- * I wish the Promise/A+ spec has this included, for now, just call requireValue
- * then you can access the .value field.
- */
-export function requireValue(promise) {
-    promise.then((resolvedValue) => { promise.value = resolvedValue; });
-    return promise;
-}
-
 export function SLEEP(duration) {
     return function() {
         return (new Promise((resolve, reject) => {
@@ -59,6 +49,21 @@ export function SLEEP(duration) {
         }));
     }
 }
+
+// export function REPLACE(variables) {
+//     return function() {
+//         let keys = Object.keys(variables);
+//         let values = new Array(keys.length);
+//         for (let i = 0; i < keys.length; i ++) {
+//             values[i] = variables[keys[i]];
+//         }
+//         return Promise.all(values).then((resolvedValues)=>{
+//             for (let i = 0; i < keys.length; i ++) {
+//                 variable[key[i]] = resolvedValues[i];
+//             }
+//         });
+//     }
+// }
 
 // produce a function that takes promise as input
 // if requireCallback is true, then the last argument of requireCallback is 

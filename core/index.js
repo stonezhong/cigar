@@ -9,6 +9,7 @@ import THROW from './Throw';
 import SEQ from './Seq';
 import PARA from './Para';
 import LET from './Let';
+import SYNC from './Sync';
 
 import { add, mul} from './Math';
 import { requireValue, promisify, transform, SLEEP, executeProgram } from './Util';
@@ -25,6 +26,8 @@ global['SEQ']       = SEQ;
 global['PARA']      = PARA;
 global['SLEEP']     = SLEEP;
 global['LET']       = LET;
+global['SYNC']      = SYNC;
+
 
 module.exports = {
     executeProgram: executeProgram,
@@ -39,5 +42,4 @@ module.exports = {
     eq:  promisify((a, b) => a === b),
     ne:  promisify((a, b) => a !== b),
     mod: promisify((a, b) => a % b),
-    requireValue: requireValue,
 };

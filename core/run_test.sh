@@ -12,6 +12,7 @@ browserify test/do.js           --bare -t babelify -o test/js-bundle/do-bundle.j
 browserify test/while.js        --bare -t babelify -o test/js-bundle/while-bundle.js -d
 browserify test/let.js          --bare -t babelify -o test/js-bundle/let-bundle.js -d
 browserify test/promisify.js    --bare -t babelify -o test/js-bundle/promisify-bundle.js -d
+browserify test/sync.js         --bare -t babelify -o test/js-bundle/sync-bundle.js -d
 
 # mocha test/js-bundle/seq-bundle.js
 # mocha $(find "test/js-bundle" -name '*.js'
