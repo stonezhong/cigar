@@ -11,6 +11,7 @@ var files = [
     'test/js-bundle/do-bundle.js',
     'test/js-bundle/while-bundle.js',
     'test/js-bundle/let-bundle.js',
+    'test/js-bundle/promisify-bundle.js',
 ];
 
 function runTest(index, callback) {

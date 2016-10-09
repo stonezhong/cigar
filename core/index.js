@@ -11,7 +11,7 @@ import PARA from './Para';
 import LET from './Let';
 
 import { add, mul} from './Math';
-import { requireValue, promisify, transform, SLEEP, executeStatement } from './Util';
+import { requireValue, promisify, transform, SLEEP, executeProgram } from './Util';
 
 global['IF']        = IF;
 global['FOR']       = FOR;
@@ -27,7 +27,7 @@ global['SLEEP']     = SLEEP;
 global['LET']       = LET;
 
 module.exports = {
-    executeStatement: executeStatement,
+    executeProgram: executeProgram,
     promisify: promisify,
     transform: transform,
     add: promisify(add),

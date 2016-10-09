@@ -38,6 +38,10 @@ export function executeStatement(statement, parentScopeContext) {
     return executeStatementWithContext(statement, effectiveScopeContext);
 }
 
+export function executeProgram(statement) {
+    return executeStatementWithContext(statement, new ScopeContext(null));
+}
+
 /**
  * So far, there is no way to get an already resolved promise's value synchronously,
  * I wish the Promise/A+ spec has this included, for now, just call requireValue
@@ -56,19 +60,39 @@ export function SLEEP(duration) {
     }
 }
 
-export function promisify(func) {
+// produce a function that takes promise as input
+// if requireCallback is true, then the last argument of requireCallback is 
+// a callback(error, result)
+export function promisify(func, requireCallback) {
     return function() {
-        // sometimes arguments is not array, so map cannot be uses
-        let argumentPromises = new Array(arguments.length);
-        for (let i = 0; i < arguments.length; i ++) {
-            argumentPromises[i] = Promise.resolve(arguments[i]);
+        if (!requireCallback) {
+            return Promise.all(arguments).then((resolvedArguments) => {
+                return func.apply(null, resolvedArguments)
+            });
         }
-        return Promise.all(argumentPromises).
-            then(
-                (resolvedArgs) => {
-                    return func.apply(null, resolvedArgs);
-                }
-            );
+
+        // TODO: use slice for to speed up, sometimes, argument is "array like", not exactly
+        //       array
+        let newArgs = new Array(arguments.length + 1);
+        for (let i = 0; i < arguments.length; i ++) {
+            newArgs[i] = arguments[i];
+        }
+
+
+        return Promise.all(newArgs).then(
+            (newResolvedArgs) => {
+                return new Promise((resolve, reject)=>{
+                    newResolvedArgs[arguments.length] = function(err, result) {
+                        if (err) {
+                            reject(err);
+                            return ;
+                        }
+                        resolve(result);
+                    };
+                    func.apply(null, newResolvedArgs);
+                }); 
+            }
+        );
     }
 }
 

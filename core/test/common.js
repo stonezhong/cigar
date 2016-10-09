@@ -3,7 +3,7 @@ import * as C from '../index';
 // we do not expect this test will raise error
 export function runTest(statement, done, validator) {
     Promise.resolve(
-        C.executeStatement(statement, null)
+        C.executeProgram(statement)
     ).then(() => {
         try {
             validator();
@@ -12,13 +12,13 @@ export function runTest(statement, done, validator) {
             done(e);
         }
     }, (e) => {
-        done(e);
+        done(new Error(`Test failed with: ${e}`));
     });
 }
 
 export function runTestAndExpectError(statement, done, validator, errorClass, errorMessage) {
     Promise.resolve(
-        C.executeStatement(statement, null)
+        C.executeProgram(statement)
     ).then(() => {
             done(new Error(`Expecting exception type: ${errorClass.name}, but no exception caught`));
     }, (e) => {
