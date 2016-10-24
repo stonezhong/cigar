@@ -14,29 +14,14 @@
  *     ]
  * 
  */
-import * as C from 'cigar';
+"use strict";
 
-function run(statement) {
-    C.executeProgram(statement).then(
-        () => {
-            printf("Done");
-        },
-        (e) => {
-            printf(`got error: ${e}`);
-        }
-    );
+const C = require('cigar');
+const common = require('./common');
+const printf = common.printf;
+const run = common.run; 
+const MongoClient = require('mongodb').MongoClient;
 
-}
-
-// mongodb does not work with browserify
-// hack it until mangodb get it fixed
-// https://jira.mongodb.org/browse/NODE-698
-function fakeRequire(moduleName) {
-    return require(moduleName);
-}
-const MongoClient = fakeRequire('mongodb').MongoClient;
-
-const printf = C.promisify(console.log);
 const DB = {
     // returns a db
     connect:    function(url, callback) {
@@ -57,26 +42,21 @@ const DB = {
     nextObject: function(cursor, callback) {
         return cursor.nextObject(callback);
     }
-
 };
 
-// promisify all APIs
-for (let key in DB) {
-    if (key == "queryCollection") {
-        DB[key] = C.promisify(DB[key]);
-    } else {
-        DB[key] = C.promisify(DB[key], true);
-    }
-}
+DB.connect          = C.promisify(DB.connect, true);
+DB.close            = C.promisify(DB.close, true);
+DB.nextObject       = C.promisify(DB.nextObject, true);
+DB.queryCollection  = C.promisify(DB.queryCollection);
 
 const appMain = SEQ(
     LET("db", () => DB.connect('mongodb://localhost:27017/mean-demo')),      // let db = DB.connect('mongodb://localhost:27017/mean-demo') 
     LET("stockQuotes", ({db}) => DB.queryCollection(db, "stockQuotes")),     // let stockQuotes = DB.queryCollection(db, "stockQuotes");
     LET("stockQuote"),                                                       // let stockQuote;
-    SYNC("db", "stockQuotes"),                                               // local variable db and stockQuotes gets resolved from promise
+    AWAIT("db", "stockQuotes"),                                              // local variable db and stockQuotes gets resolved from promise
     DO(                                                                      // do {
         (local) => local.stockQuote = DB.nextObject(local.stockQuotes),      //     stockQuote = DB.nextObject(stockQuotes) 
-        SYNC("stockQuote"),                                                  //     local variable stockQuotes gets resolved from promise
+        AWAIT("stockQuote"),                                                 //     local variable stockQuotes gets resolved from promise
         IF(                                                                  //     if (!stockQuote) {
             ({stockQuote}) => !stockQuote                                    //
         ).THEN(BREAK),                                                       //         break; }
@@ -85,9 +65,9 @@ const appMain = SEQ(
                 stockQuote.symbol, 
                 stockQuote.bidPrice, 
                 stockQuote.askPrice);
-        },
+        }
     ).WHILE(() => true),                                                     // } while (true);
-    ({db}) => DB.close(db, false),                                           // DB.close(db, false);
+    ({db}) => DB.close(db, false)                                            // DB.close(db, false);
 );
 
 /**
@@ -98,3 +78,4 @@ const appMain = SEQ(
  * Done                                        
  */
 run(appMain);
+
