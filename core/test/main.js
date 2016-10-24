@@ -23,12 +23,16 @@ function runTest(index, callback) {
 
     var mocha = new Mocha();
     mocha.addFile(files[index]);
-    mocha.run(function() {
+    mocha.run(function(err) {
+        if (err != 0) {
+            console.log("Test failed");
+            return ;
+        }
         runTest(index + 1, callback);
     });
     return ;
 }
 
 runTest(0, function() {
-    console.log("done");
+    console.log("All tests passed!");
 });
