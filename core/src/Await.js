@@ -1,7 +1,7 @@
 // Replace local variable when they gets resolved
 // 
 // syntax: 
-// SYNC(["foo", "bar"])
+// AWAIT(["foo", "bar"])
 
 const Util = require('./Util');
 const Statement = require('./Statement');
@@ -27,8 +27,8 @@ class SyncStatement extends Statement {
 }
 
 
-const SYNC = function(propertyName, expression) {
+const AWAIT = function(propertyName, expression) {
     return new SyncStatement(propertyName, expression);
 }
 
-module.exports = SYNC;
+module.exports = AWAIT;

@@ -11,7 +11,7 @@ const THROW = require('./src/Throw');
 const SEQ = require('./src/Seq');
 const PARA = require('./src/Para');
 const LET = require('./src/Let');
-const SYNC = require('./src/Sync');
+const AWAIT = require('./src/Await');
 
 const requireValue = Util.requireValue;
 const promisify = Util.promisify;
@@ -34,7 +34,7 @@ global['SEQ']       = SEQ;
 global['PARA']      = PARA;
 global['SLEEP']     = SLEEP;
 global['LET']       = LET;
-global['SYNC']      = SYNC;
+global['AWAIT']     = AWAIT;
 
 
 module.exports = {

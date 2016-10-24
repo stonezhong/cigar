@@ -4,7 +4,7 @@ var expect = require("chai").expect;
 import * as C from '../index';
 import { runTest } from './common.js';
 
-describe('SYNC statement', function() {
+describe('AWAIT statement', function() {
     it('should replace variable with their resovled value', function(done) {
         let ax;
         let ay;
@@ -12,7 +12,7 @@ describe('SYNC statement', function() {
             SEQ(
                 LET("x", Promise.resolve(2)),
                 LET("y", Promise.resolve(3)),
-                SYNC("x", "y"),
+                AWAIT("x", "y"),
                 ({x, y}) => {
                     ax = x;
                     ay = y;
