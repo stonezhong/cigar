@@ -7,3 +7,4 @@ For details, pls see [Core](core)
 |-------------------------------------------|-----------------------------------------------|
 |[core](core)                               |Cigar -- An asynchronous JavaScript Framework  |
 |[examples](examples)                       |Various examples                               |
+|[node-examples](node-examples)             |Node examples                                  |

@@ -1,0 +1,22 @@
+{
+  "name": "node-mysql-demos",
+  "version": "1.0.0",
+  "description": "Node MySQL Demos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./build.sh"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.16.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.0",
+    "watchify": "^3.7.0"
+  },
+  "dependencies": {
+    "cigar": "*",
+    "node-mysql": "^0.4.2"
+  }
+}
