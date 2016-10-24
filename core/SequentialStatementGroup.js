@@ -1,7 +1,8 @@
-import {executeStatement} from './Util';
-import Statement from './Statement';
+const Util = require('./Util');
+const Statement = require('./Statement');
+const executeStatement = Util.executeStatement;
 
-export default class SequentialStatementGroup extends Statement {
+class SequentialStatementGroup extends Statement {
     constructor(statements) {
         super();
         this.statements = statements;
@@ -27,3 +28,5 @@ export default class SequentialStatementGroup extends Statement {
         );
     }
 }
+
+module.exports = SequentialStatementGroup;

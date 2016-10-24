@@ -1,7 +1,8 @@
-import {executeStatement} from './Util';
-import Statement from './Statement';
+const Util = require('./Util');
+const Statement = require('./Statement');
+const executeStatement = Util.executeStatement;
 
-export default class ParallelStatementGroup extends Statement {
+class ParallelStatementGroup extends Statement {
     constructor(statements) {
         super();
         this.statements = statements;
@@ -23,3 +24,5 @@ export default class ParallelStatementGroup extends Statement {
         );
     }
 }
+
+module.exports = ParallelStatementGroup;

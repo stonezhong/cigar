@@ -1,4 +1,4 @@
-export default class ScopeContext {
+class ScopeContext {
     constructor(parent) {
         this.parent = parent;
         this.ctx = {};
@@ -40,3 +40,5 @@ export default class ScopeContext {
         });
     }
 }
+
+module.exports = ScopeContext;

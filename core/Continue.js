@@ -2,11 +2,11 @@
 // syntax: 
 // CONTINUE
 
-import ContinueError from './ContinueError';
+const ContinueError = require('./ContinueError');
 
-let theContinueError = new ContinueError();
+const theContinueError = new ContinueError();
 
-let CONTINUE = function() {
+const CONTINUE = function() {
     return Promise.reject(theContinueError);
 }
 

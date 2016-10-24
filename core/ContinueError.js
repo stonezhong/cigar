@@ -1,4 +1,6 @@
-import ExtendableError from 'es6-error';
+const ExtendableError = require('es6-error');
  
-export default class ContinueError extends ExtendableError {
+class ContinueError extends ExtendableError {
 }
+
+module.exports = ContinueError;

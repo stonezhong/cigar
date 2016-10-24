@@ -1,11 +1,12 @@
 // Syntax
 // DO(...statements).WHILE(condition expression)
 
-import {executeStatement} from './Util';
-import Statement from './Statement';
-import SequentialStatementGroup from './SequentialStatementGroup';
-import BreakError from './BreakError';
-import ContinueError from './ContinueError';
+const Util = require('./Util');
+const Statement = require('./Statement');
+const SequentialStatementGroup = require('./SequentialStatementGroup');
+const BreakError = require('./BreakError');
+const ContinueError = require('./ContinueError');
+const executeStatement = Util.executeStatement;
 
 class DoWhileStatement extends Statement {
     // conditionExpr;
@@ -57,7 +58,7 @@ class DoWhileBodyNode {
     }
 }
 
-let DO = function(... statements) {
+const DO = function(... statements) {
     return new DoWhileBodyNode(new SequentialStatementGroup(statements));
 }
 

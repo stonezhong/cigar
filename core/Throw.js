@@ -1,7 +1,7 @@
 // Syntax
 // THROW(error)
 
-let THROW = function(error) {
+const THROW = function(error) {
     return function() {
         return Promise.reject(error);
     };

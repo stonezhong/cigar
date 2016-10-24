@@ -12,11 +12,10 @@
 //           statement3, and when statement3 is completed, this SEQ([statement1, statement2, statement3])
 //           is considered "completed"
 
-import Statement from './Statement';
-import SequentialStatementGroup from './SequentialStatementGroup';
+const Statement = require('./Statement');
+const SequentialStatementGroup = require('./SequentialStatementGroup');
 
-
-let SEQ = function(... statements) {
+const SEQ = function(... statements) {
     return new SequentialStatementGroup(statements);
 }
 

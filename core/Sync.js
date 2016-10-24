@@ -3,8 +3,9 @@
 // syntax: 
 // SYNC(["foo", "bar"])
 
-import {executeStatement} from './Util';
-import Statement from './Statement';
+const Util = require('./Util');
+const Statement = require('./Statement');
+const executeStatement = Util.executeStatement;
 
 class SyncStatement extends Statement {
     constructor(... varNames) {
@@ -26,7 +27,7 @@ class SyncStatement extends Statement {
 }
 
 
-let SYNC = function(propertyName, expression) {
+const SYNC = function(propertyName, expression) {
     return new SyncStatement(propertyName, expression);
 }
 

@@ -2,9 +2,10 @@
 // IF (condition expression).THEN(... statements);
 // IF (condition expression).THEN(... statements).ELSE(... statements);
 
-import {executeStatement} from './Util';
-import Statement from './Statement';
-import SequentialStatementGroup from './SequentialStatementGroup';
+const Util = require('./Util');
+const Statement = require('./Statement');
+const SequentialStatementGroup = require('./SequentialStatementGroup');
+const executeStatement = Util.executeStatement;
 
 class IfStatement extends Statement {
     // conditionExpr;
@@ -66,7 +67,7 @@ class IfConditionThenStatement extends Statement {
     }
 }
 
-let IF = function(expr) {
+const IF = function(expr) {
     return new IfConditionNode(expr);
 }
 

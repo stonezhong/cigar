@@ -2,11 +2,11 @@
 // syntax: 
 // BREAK
 
-import BreakError from './BreakError';
+const BreakError = require('./BreakError');
 
-let theBreakError = new BreakError();
+const theBreakError = new BreakError();
 
-let BREAK = function() {
+const BREAK = function() {
     return Promise.reject(theBreakError);
 }
 

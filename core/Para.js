@@ -5,12 +5,13 @@
 // once all the inner statements are "completed".
 // 
 
-import {executeStatement} from './Util';
-import Statement from './Statement';
-import ParallelStatementGroup from './ParallelStatementGroup';
+const Util = require('./Util');
+const Statement = require('./Statement');
+const ParallelStatementGroup = require('./ParallelStatementGroup');
+const executeStatement = Util.executeStatement;
 
 
-let PARA = function(... statements) {
+const PARA = function(... statements) {
     return new ParallelStatementGroup(statements);
 }
 

@@ -1,9 +1,10 @@
 // Syntax: TRY(... statements).CATCH(exception handler).FINALLY(... statements)
 // Syntax: TRY(... statements).FINALLY(... statements)
 
-import {executeStatement} from './Util';
-import Statement from './Statement';
-import SequentialStatementGroup from './SequentialStatementGroup';
+const Util = require('./Util');
+const Statement = require('./Statement');
+const SequentialStatementGroup = require('./SequentialStatementGroup');
+const executeStatement = Util.executeStatement;
 
 class TryCatchFinallyStatement extends Statement {
     // tryBlock
@@ -94,7 +95,7 @@ class TryCatchNode extends Statement {
     }
 }
 
-let TRY = function(... statements) {
+const TRY = function(... statements) {
     return new TryNode(new SequentialStatementGroup(statements));
 }
 

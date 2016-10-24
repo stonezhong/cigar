@@ -1,11 +1,12 @@
 // Syntax
 // FOR(initial expression, condition expression, step expression).DO(... statements);
 
-import {executeStatement} from './Util';
-import Statement from './Statement';
-import SequentialStatementGroup from './SequentialStatementGroup';
-import BreakError from './BreakError';
-import ContinueError from './ContinueError';
+const Util = require('./Util');
+const Statement = require('./Statement');
+const SequentialStatementGroup = require('./SequentialStatementGroup');
+const BreakError = require('./BreakError');
+const ContinueError = require('./ContinueError');
+const executeStatement = Util.executeStatement;
 
 class ForStatement extends Statement {
     // initExpr;
@@ -81,7 +82,7 @@ class ForConditionNode {
     }
 }
 
-let FOR = function(initExpr, conditionExpr, stepExpr) {
+const FOR = function(initExpr, conditionExpr, stepExpr) {
     return new ForConditionNode(initExpr, conditionExpr, stepExpr);
 }
 

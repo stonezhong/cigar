@@ -1,9 +1,15 @@
-import { promisify } from './Util';
+const Util = require('./Util');
+const promisify = Util.promisify;
 
-export function add(... args) {
+function add(... args) {
     return args.reduce((pv, cv) => pv + cv, 0);
 }
 
-export function mul(... args) {
+function mul(... args) {
     return args.reduce((pv, cv) => pv * cv, 1);
 }
+
+module.exports = {
+    add: add,
+    mul: mul,
+};

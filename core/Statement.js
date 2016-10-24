@@ -2,7 +2,7 @@
 // A statement is considered "completed" if it returns a promise and that promise
 // is resolved.
 
-export default class Statement {
+class Statement {
     // a statement has a run method
     // run(ScopeContext context);
 
@@ -10,3 +10,5 @@ export default class Statement {
         return false;
     }
 }
+
+module.exports = Statement;

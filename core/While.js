@@ -1,11 +1,12 @@
 // Syntax
 // WHILE (condition expression).DO(... statements)
 
-import {executeStatement} from './Util';
-import Statement from './Statement';
-import SequentialStatementGroup from './SequentialStatementGroup';
-import BreakError from './BreakError';
-import ContinueError from './ContinueError';
+const Util = require('./Util');
+const Statement = require('./Statement');
+const SequentialStatementGroup = require('./SequentialStatementGroup');
+const BreakError = require('./BreakError');
+const ContinueError = require('./ContinueError');
+const executeStatement = Util.executeStatement;
 
 class WhileStatement extends Statement {
     // conditionExpr;
@@ -56,7 +57,7 @@ class WhlieConditionNode {
     }
 }
 
-let WHILE = function(conditionExpr) {
+const WHILE = function(conditionExpr) {
     return new WhlieConditionNode(conditionExpr);
 }
 

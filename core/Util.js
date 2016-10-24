@@ -1,10 +1,10 @@
-import Statement from './Statement';
-import ScopeContext from './ScopeContext';
+const Statement = require('./Statement');
+const ScopeContext = require('./ScopeContext');
 
 /** 
  * deprecated 
  **/
-export function isPromise(value) {
+function isPromise(value) {
     return (typeof(value) === 'object' &&
         typeof(value.then) === 'function' &&
         typeof(value.catch) === 'function');
@@ -31,18 +31,18 @@ function executeStatementWithContext(statement, scopeContext) {
     return statement;
 }
 
-export function executeStatement(statement, parentScopeContext) {
+function executeStatement(statement, parentScopeContext) {
     let effectiveScopeContext = (statement instanceof Statement) ? 
         (statement.requireNewScopeContext() ? new ScopeContext(parentScopeContext) : parentScopeContext) : parentScopeContext;
 
     return executeStatementWithContext(statement, effectiveScopeContext);
 }
 
-export function executeProgram(statement) {
+function executeProgram(statement) {
     return executeStatementWithContext(statement, new ScopeContext(null));
 }
 
-export function SLEEP(duration) {
+function SLEEP(duration) {
     return function() {
         return (new Promise((resolve, reject) => {
             setTimeout(resolve, duration);
@@ -50,25 +50,10 @@ export function SLEEP(duration) {
     }
 }
 
-// export function REPLACE(variables) {
-//     return function() {
-//         let keys = Object.keys(variables);
-//         let values = new Array(keys.length);
-//         for (let i = 0; i < keys.length; i ++) {
-//             values[i] = variables[keys[i]];
-//         }
-//         return Promise.all(values).then((resolvedValues)=>{
-//             for (let i = 0; i < keys.length; i ++) {
-//                 variable[key[i]] = resolvedValues[i];
-//             }
-//         });
-//     }
-// }
-
 // produce a function that takes promise as input
 // if requireCallback is true, then the last argument of requireCallback is 
 // a callback(error, result)
-export function promisify(func, requireCallback) {
+function promisify(func, requireCallback) {
     return function() {
         if (!requireCallback) {
             return Promise.all(arguments).then((resolvedArguments) => {
@@ -101,8 +86,17 @@ export function promisify(func, requireCallback) {
     }
 }
 
-export function transform(value, transformer) {
+function transform(value, transformer) {
     return Promise.resolve(value).then((resolvedValue) => {
         return transformer(resolvedValue);
     });
 }
+
+module.exports = {
+    isPromise: isPromise,
+    executeStatement: executeStatement,
+    executeProgram: executeProgram,
+    SLEEP: SLEEP,
+    promisify: promisify,
+    transform: transform,
+};
