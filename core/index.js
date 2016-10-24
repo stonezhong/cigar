@@ -1,18 +1,26 @@
-import IF from './If';
-import FOR from './For';
-import WHILE from './While';
-import DO from './Do';
-import BREAK from './Break';
-import CONTINUE from './Continue';
-import TRY from './Try';
-import THROW from './Throw';
-import SEQ from './Seq';
-import PARA from './Para';
-import LET from './Let';
-import SYNC from './Sync';
+const Util = require('./src/Util');
+const Math = require('./src/Math');  // TODO: rename it, Math is a reserved object
+const IF = require('./src/If');
+const FOR = require('./src/For');
+const WHILE = require('./src/While');
+const DO = require('./src/Do');
+const BREAK = require('./src/Break');
+const CONTINUE = require('./src/Continue');
+const TRY = require('./src/Try');
+const THROW = require('./src/Throw');
+const SEQ = require('./src/Seq');
+const PARA = require('./src/Para');
+const LET = require('./src/Let');
+const SYNC = require('./src/Sync');
 
-import { add, mul} from './Math';
-import { requireValue, promisify, transform, SLEEP, executeProgram } from './Util';
+const requireValue = Util.requireValue;
+const promisify = Util.promisify;
+const transform = Util.transform;
+const SLEEP = Util.SLEEP;
+const executeProgram = Util.executeProgram;
+
+const add = Math.add;
+const mul = Math.mul;
 
 global['IF']        = IF;
 global['FOR']       = FOR;
