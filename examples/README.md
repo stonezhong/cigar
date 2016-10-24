@@ -14,7 +14,6 @@
 |[try2](js/try2.js)                         |Demo 1 for TRY(statements).CATCH(handler).FINALLY(statements) statement       |[here](http://vm1.stonezhong.net/run-example.php?example=try2)          |
 |[parallel](js/parallel.js)                 |Run bunch of statement in parallel, each statement could be asynchronous      |[here](http://vm1.stonezhong.net/run-example.php?example=parallel)      |
 |[ajax-01](js/ajax-01.js)                   |Run bunch of statement in parallel, each statement could be asynchronous      |[here](http://vm1.stonezhong.net/run-example.php?example=ajax-01)       |
-|[mongo-example-01](js/mongo-example-01.js) |Node example: query mongodb                                                   |                                                                        |
 
 # Before you build
 First, make sure you have node 6.x installed, to check it, run
