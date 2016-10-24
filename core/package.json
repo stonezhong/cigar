@@ -1,6 +1,6 @@
 {
   "name": "cigar",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Framework for asynchronous programming",
   "main": "index.js",
   "scripts": {
